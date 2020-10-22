@@ -26,5 +26,14 @@ massive({
 }).catch(err => console.log(err));
 
 // Endpoints
+app.post('/api/register', authCtrl.register);
+app.post('/api/login', authCtrl.login);
+app.get('/api/logout', authCtrl.logout);
+
+app.post('/api/post', postCtrl.createPost);
+app.get('/api/posts/:id', postCtrl.getUserPosts);
+app.delete('/api/post/:id', postCtrl.deletePost);
+
+app.put('/api/user/:id', postCtrl.updateUser);
 
 app.listen(port, () => console.log(`Server running on ${port}`));

@@ -25,10 +25,10 @@ module.exports = {
     },
     updateUser: (req, res) => {
         const   {id} = req.params,
-                {about, likes, dislikes, profilePicture} = req.body,
+                {name, city, state} = req.body,
                 db = req.app.get('db');
 
-        db.users.update_user(about, likes, dislikes, profilePicture, id)
+        db.users.update_user(name, city, state, id)
         .then(user => res.status(200).send(user))
         .catch(err => console.log(err));
     }
