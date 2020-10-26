@@ -1,33 +1,48 @@
+import axios from 'axios';
+
 const initialState = {
-    user: {}
+    user: {name: '', userId: 0}
 }
 
 const   GET_USER = 'GET_USER',
-        CLEAR_USER = 'CLEAR_USER';
+        LOGIN_USER = 'LOGIN_USER',
+        LOGOUT_USER = 'LOGOUT_USER';
 
-export function getUser(userObj){
+export function getUser(){
+    const user = axios.get('/api/auth/user')
     return {
         type: GET_USER,
-        payload: userObj
+        payload: user
     }
 }
 
-export function clearUser(){
+export function loginUser(user){
     return {
-        type: CLEAR_USER,
-        payload: {}
+        type: LOGIN_USER,
+        payload: user,
     }
 }
 
-export default function reducer(state = initialState, action){
-    const {type, payload} = action;
+export function logoutUser(){
+    return {
+        type: LOGOUT_USER,
+        payload: initialState
+    }
+}
 
-    switch(type){
-        case GET_USER:
-            return {...state, user: payload};
-        case CLEAR_USER:
-            return {...state, user: payload};
-        default:
+export default function (state = initialState, action){
+    switch(action.type){
+        case LOGIN_USER:
+            return {...state, user: action.payload};
+        case LOGOUT_USER:
+            return {...state, ...action.payload};
+        case GET_USER + 'PENDING':
             return state;
+        case GET_USER + 'FULFILLED':
+            return {...state, user: action.payload.data};
+        case GET_USER + 'REJECTED':
+            return initialState;
+        default:
+            return initialState;
     }
 }
