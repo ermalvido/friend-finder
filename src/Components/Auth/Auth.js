@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../../ducks/reducer';
+import { Button, Typography } from '@material-ui/core';
 
 class Auth extends Component {
     constructor(props){
@@ -16,7 +17,7 @@ class Auth extends Component {
             registerView: false
         }
     }
-
+    
     componentDidMount(){
         if(this.props.user.email){
             this.props.history.push('/');
@@ -38,6 +39,7 @@ class Auth extends Component {
             .then(res => {
                 this.props.getUser(res.data);
                 this.props.history.push('/');
+                this.setState({registerView: false, email: '', password: '', verPassword: ''})
             })
             .catch(err => console.log(err));
         } else {
@@ -60,17 +62,17 @@ class Auth extends Component {
         return (
             <div className='auth-container'>
                 <section className='authentication-info'>
-                    <h1>Friend Finder</h1>
+                    <Typography variant='h1' color='secondary'>Friend Finder</Typography>
                     {this.state.registerView
                     ? (<>
-                        <h3>Register Below</h3>
+                        <Typography variant='h5' color='initial'>Register Below</Typography>
                         <input
                             value={this.state.name}
                             name='name'
                             placeholder='Name'
                             onChange={(e) => this.handleInput(e)}/>
                         </>)
-                    : <h3>Login Below</h3>}
+                    : <Typography variant='h5' color='initial'>Login Below</Typography>}
                     <input
                         value={this.state.email}
                         name='email'
@@ -100,11 +102,11 @@ class Auth extends Component {
                             name='state'
                             placeholder='State'
                             onChange={(e) => this.handleInput(e)}/>
-                        <button onClick={this.handleRegister}>Register</button>
+                        <Button onClick={this.handleRegister} variant='outlined' color='secondary'>Register</Button>
                         <p>Already a member? <span onClick={this.handleToggle}>Login Here</span></p>
                         </>)
                     : (<>
-                        <button onClick={this.handleLogin}>Login</button>
+                        <Button onClick={this.handleLogin} variant='outlined' color='secondary'>Login</Button>
                         <p>Need to create an account? <span onClick={this.handleToggle}>Register Here</span></p>
                         </>)}
                 </section>
