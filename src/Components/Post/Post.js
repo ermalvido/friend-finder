@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import { Button } from '@material-ui/core'
 
 class Post extends Component {
     constructor(props){
@@ -47,7 +48,7 @@ class Post extends Component {
                     </div>
                 }
                 <div className='delete'>
-                    <button onClick={this.delete} className='black_button'>Delete</button>
+                    <Button variant='outlined' size='small' onClick={this.delete} className='black_button'>Delete</Button>
                 </div>
             </div>
         )

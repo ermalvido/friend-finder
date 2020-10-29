@@ -58,6 +58,10 @@ function Nav(props) {
 
     const menuItems = [
         {
+            menuTitle: "Profile",
+            pageURL: "/about"
+        },
+        {
             menuTitle: "Home",
             pageURL: "/dashboard"
         },
@@ -84,7 +88,7 @@ function Nav(props) {
                             <IconButton
                                 edge="start"
                                 className={classes.menuButton}
-                                color="inherit"
+                                color="secondary"
                                 aria-label="menu"
                                 onClick={handleMenu}
                             >
@@ -118,20 +122,33 @@ function Nav(props) {
                         ) : (
                         <div className={classes.headerOptions}>
                             <Button
+                                variant='text'
+                                color='secondary'
                                 onClick={() => handleButtonClick("/dashboard")}
 
                             >
-                                <img className='nav_img' src={homeLogo} alt='home' />
+                                HOME
                             </Button>
                             <Button
+                                variant='text'
+                                color='secondary'
                                 onClick={() => handleButtonClick("/new")}
                             >
-                                <img className='nav_img' src={newLogo} alt='new post' />
+                                NEW POST
                             </Button>
                             <Button
+                                variant='text'
+                                color='secondary'
+                                onClick={() => handleButtonClick("/about")}
+                            >
+                                PROFILE
+                            </Button>
+                            <Button
+                                variant='text'
+                                color='inherit'
                                 onClick={() => handleButtonClick("/")}
                             >
-                                <img className='nav_img logout' src={logoutLogo} alt='logout' />
+                                LOGOUT
                             </Button>
                         </div>
                         )}
