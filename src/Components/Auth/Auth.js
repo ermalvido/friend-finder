@@ -62,17 +62,17 @@ class Auth extends Component {
         return (
             <div className='auth-container'>
                 <section className='authentication-info'>
-                    <Typography variant='h1' color='secondary'>Friend Finder</Typography>
+                    <Typography align='center' variant='h2' color='initial'>Friend Finder</Typography>
                     {this.state.registerView
                     ? (<>
-                        <Typography variant='h5' color='initial'>Register Below</Typography>
+                        <Typography align='center' variant='h5' color='initial'>Register Below</Typography>
                         <input
                             value={this.state.name}
                             name='name'
                             placeholder='Name'
                             onChange={(e) => this.handleInput(e)}/>
                         </>)
-                    : <Typography variant='h5' color='initial'>Login Below</Typography>}
+                    : <Typography align='center' variant='h5' color='initial'>Login Below</Typography>}
                     <input
                         value={this.state.email}
                         name='email'
@@ -102,12 +102,12 @@ class Auth extends Component {
                             name='state'
                             placeholder='State'
                             onChange={(e) => this.handleInput(e)}/>
-                        <Button onClick={this.handleRegister} variant='outlined' color='secondary'>Register</Button>
-                        <p>Already a member? <span onClick={this.handleToggle}>Login Here</span></p>
+                        <Button size='small' onClick={this.handleRegister} variant='outlined' color='initial'>Register</Button>
+                        <Typography align='center'>Already a member? <span onClick={this.handleToggle}>Login Here</span></Typography>
                         </>)
                     : (<>
-                        <Button onClick={this.handleLogin} variant='outlined' color='secondary'>Login</Button>
-                        <p>Need to create an account? <span onClick={this.handleToggle}>Register Here</span></p>
+                        <Button size='small' onClick={this.handleLogin} variant='outlined' color='initial'>Login</Button>
+                        <Typography align='center'>Need to create an account? <span onClick={this.handleToggle}>Register Here</span></Typography>
                         </>)}
                 </section>
             </div>

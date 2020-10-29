@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import SearchLogo from './SearchLogo.png';
+import { Button, Typography } from '@material-ui/core';
 
 
 class Dash extends Component {
@@ -65,10 +66,10 @@ class Dash extends Component {
                     <div className='dash_search_box'>
                         <input onChange={(e) => this.handleChange(e)} className='dash_search_bar' placeholder='Search by Title' />
                             <img onClick={this.getAllPosts} className='dash_search_button' src={SearchLogo} alt='search' />
-                            <button onClick={this.resetSearch} className='black_button' id='dash_reset'>Reset</button>
+                            <Button size='small' onClick={this.resetSearch} className='black_button' id='dash_reset'>Reset</Button>
                     </div>
                     <div className='dash_check_box'>
-                        <p>My Posts</p>
+                        <Typography>My Posts</Typography>
                         <input checked={this.state.myPost} onChange={() => this.setState({myPost: !this.state.myPost}, this.getAllPosts)} type='checkbox' />
                     </div>
                 </div>

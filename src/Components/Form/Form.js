@@ -3,6 +3,7 @@ import store from '../../ducks/store';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import { Button, Typography } from '@material-ui/core';
 
 class Form extends Component {
     constructor(props){
@@ -38,11 +39,11 @@ class Form extends Component {
         return (
             <div className='Form'>
                 <div className='form_content_box'>
-                    <h1 className='title'>New Post</h1>
-                    <input onChange={(e) => this.handleInput(e)} className='form-input' type='text' name='title' placeholder='Enter Post Title' />
-                    <textarea onChange={(e) => this.handleInput(e)} className='form-text' type='text' name='content' placeholder='Share with us' rows='40' cols='50' />
+                <Typography align='center' variant='h2' color='initial'>New Post</Typography>
+                    <input onChange={(e) => this.handleInput(e)} className='form-input' type='text' name='title' placeholder='Post Title' />
+                    <textarea onChange={(e) => this.handleInput(e)} className='form-text' type='text' name='content' placeholder='Share with us' rows='40' cols='40' />
                     <Link to='/dashboard'>
-                        <button onClick={this.createPost} className='form-post-button'>Post</button>
+                        <Button size='small' onClick={this.createPost} className='form-post-button'>Post</Button>
                     </Link>
                 </div>
             </div>

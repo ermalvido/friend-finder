@@ -1,3 +1,221 @@
 .App {
+  padding: 20px 20px 20px 100px;
+  background-color:  #f2f2f2;
   text-align: center;
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: inherit;
+}
+
+.Auth {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(#e66465, #9198e5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* display:flex; */
+  /* text-align: center;  */
+  justify-content: center;
+  color: white;
+  /* flex-direction: row; */
+}
+
+.auth-container {
+  border-radius: 10px;
+  box-shadow: 0 14px 28px 0 rgba(0,0,0,.25),
+              0 10px 10px 0 rgba(0,0,0,.26);
+  background-image: linear-gradient(#e66465, #9198e5);
+  height: 45vh;
+  width: 35vw;
+  margin: 200px auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px; 
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  scroll-margin-inline-end: 0px;
+}
+
+.black_button{
+border-radius: 1px;
+padding: 10px 20px;
+border: none;
+}
+
+.Dash{
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  align-items: center;
+  box-sizing: inherit;
+  display: block;  
+}
+
+.dash_filter{
+  display: flex;
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),
+              0 1px 2px 0 rgba(0,0,0,.2);
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.dash_search_box {
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: inherit;
+}
+
+.dash_search_bar {
+height: 25px;
+width: 45%;
+box-sizing: inherit;
+}
+
+.dash_search_button{
+  height: 26px;
+  width: 20px;
+  background-image: linear-gradient(#e66465, #9198e5);
+  border-radius: 4px;
+  margin: 1px;
+  padding: 2px;
+}
+
+#dash_reset{
+  height: 30px;
+  padding: 5px 10px;
+}
+
+.dark_button{
+  border-radius: 1px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),
+              0 1px 2px 0 rgba(0,0,0,.2);
+  background-image: radial-gradient(circle at 50% -46%, #737373, #403d39);
+  color: #fff;
+  border: none;
+}
+
+.my_post{
+  box-sizing: inherit;
+  display: flex;
+  width: 70px;
+  height: 30px;
+  text: center;
+}
+
+.dash_checkbox{
+  display: flex;
+  justify-content: right;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: inherit;
+}
+
+.dash_post_box{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+  width: 70%;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form_content_box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+  width: calc(100% - 100px);
+  height: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form_input {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  box-sizing: inherit;
+}
+
+.form_text {
+  width: 90%;
+  margin: 3px auto 10px;
+}
+
+.form_input {
+  width: 90%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  box-sizing: inherit;
+}
+
+.form_text_box {
+  resize: none;
+  width:80%;
+  margin:10px;
+  
+}
+
+.form_button {
+  position: relative;
+  left: 90%;
+}
+
+.post_content_box{
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+  width: calc(100% - 100px);
+  height: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 700;
 }

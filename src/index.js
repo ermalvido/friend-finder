@@ -3,17 +3,29 @@ import ReactDOM from 'react-dom';
 import {HashRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './ducks/store';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#000000'
+    }
+  }
+});
+
+const rootElement = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <HashRouter>
         <App />
       </HashRouter>
     </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
