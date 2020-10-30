@@ -4,6 +4,7 @@ const express = require('express'),
       session = require('express-session'),
       authCtrl = require('./controllers/authCtrl'),
       postCtrl = require('./controllers/postCtrl'),
+      nmCtrl = require('./controllers/nmCtrl'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
       port = SERVER_PORT,
       app = express();
@@ -30,10 +31,13 @@ app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
 
-app.post('/api/post', postCtrl.createPost);
+app.post('/api/posts/create', postCtrl.createPost);
+app.get('/api/posts', postCtrl.getAllPost);
 app.get('/api/posts/:id', postCtrl.getUserPosts);
 app.delete('/api/post/:id', postCtrl.deletePost);
 
 app.put('/api/user/:id', postCtrl.updateUser);
+
+app.post('/api/email', nmCtrl.email);
 
 app.listen(port, () => console.log(`Server running on ${port}`));

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { TextField, Typography } from '@material-ui/core';
 
-
 class User extends Component {
     render() {
         return (

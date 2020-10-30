@@ -1,13 +1,21 @@
 module.exports = {
     createPost: (req, res) => {
-        const {id, content} = req.body,
+        const {title, content} = req.body,
+            {user_id} = req.session.user,
             db = req.app.get('db');
 
-        db.post.create_post(id, content)
+        db.post.create_post(title, content, user_id)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err));
     },
-    getUserPosts: (req, res) => {
+    getAllPost: async(req, res) => {
+        const db = req.app.get('db');
+
+        db.post.get_posts()
+        .then(posts => res.status(200).send(posts))
+        .catch(err => res.status(500).send(err));
+    },
+    getUserPosts: async(req, res) => {
         const {id} = req.params,
             db = req.app.get('db');
 
@@ -15,7 +23,7 @@ module.exports = {
         .then(posts => res.status(200).send(posts))
         .catch(err => res.status(500).send(err));
     },
-    deletePost: (req, res) => {
+    deletePost: async(req, res) => {
         const {id} = req.params,
             db = req.app.get('db');
 

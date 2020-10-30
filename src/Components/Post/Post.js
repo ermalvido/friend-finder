@@ -8,7 +8,7 @@ class Post extends Component {
         super(props)
         this.state = {
             title: '',
-            author_id: '',
+            user_id: '',
             content: ''
         }
         this.delete = this.delete.bind(this)

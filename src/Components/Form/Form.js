@@ -15,25 +15,31 @@ class Form extends Component {
         }
     }
 
-    handleInput(e) {
+    handleInput = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
 
     handleSubmit = () => {
-        const newPost = this.state
-        console.log('sending new post', newPost);
-    }
-
-    createPost = () => {
-        const {title, content} = this.props
+        const {title, content} = this.state;
 
         axios
-        .post('/api/post', {title, content})
+        .post('/api/posts/create', {title, content})
         .then(() => {
-            this.setState({newPost: {title, content}});
+            this.props.history.push('/dashboard')
         })
         .catch(err => console.log(err));
     }
+
+    // createPost = () => {
+    //     const {title, content} = this.props
+
+    //     axios
+    //     .post('/api/post', {title, content})
+    //     .then(() => {
+    //         this.setState({newPost: {title, content}});
+    //     })
+    //     .catch(err => console.log(err));
+    // }
 
     render() {
         return (
@@ -43,7 +49,7 @@ class Form extends Component {
                     <input onChange={(e) => this.handleInput(e)} className='form-input' type='text' name='title' placeholder='Post Title' />
                     <textarea onChange={(e) => this.handleInput(e)} className='form-text' type='text' name='content' placeholder='Share with us' rows='40' cols='40' />
                     <Link to='/dashboard'>
-                        <Button size='small' onClick={this.createPost} className='form-post-button'>Post</Button>
+                        <Button size='small' onClick={this.handleSubmit} className='form-post-button'>Post</Button>
                     </Link>
                 </div>
             </div>

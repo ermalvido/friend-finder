@@ -9,6 +9,7 @@ create table if not exists users(
 
 create table if not exists post(
     post_id serial primary key,
+    title varchar(50),
     content text,
     user_id int references users(user_id)
 );

@@ -38,7 +38,7 @@ class Dash extends Component {
         this.setState({myPost: !this.state.myPost})
     }
 
-    resetSearch() {
+    resetSearch = () => {
         let url = '/api/posts'
         if(this.state.myPost){
             url += "?user_posts=true&search="
@@ -48,9 +48,10 @@ class Dash extends Component {
         })
     }
     render() {
+        console.log(this.state.posts)
         const mapPosts = this.state.posts.map((e) => {
             return (
-                <Link to={`/Post/${e.id}`} key={e.id}>
+                <Link to={`/post/${e.post_id}`} key={e.post_id}>
                     <div className='content_box dash_post_box'>
                         <h3>{e.title}</h3>
                         <div className='author_box'>

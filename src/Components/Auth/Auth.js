@@ -102,11 +102,11 @@ class Auth extends Component {
                             name='state'
                             placeholder='State'
                             onChange={(e) => this.handleInput(e)}/>
-                        <Button size='small' onClick={this.handleRegister} variant='outlined' color='initial'>Register</Button>
+                        <Button size='small' onClick={this.handleRegister} className='register-button' variant='outlined' color='initial'>Register</Button>
                         <Typography align='center'>Already a member? <span onClick={this.handleToggle}>Login Here</span></Typography>
                         </>)
                     : (<>
-                        <Button size='small' onClick={this.handleLogin} variant='outlined' color='initial'>Login</Button>
+                        <Button size='small' onClick={this.handleLogin} className='login-button' variant='outlined' color='initial'>Login</Button>
                         <Typography align='center'>Need to create an account? <span onClick={this.handleToggle}>Register Here</span></Typography>
                         </>)}
                 </section>
