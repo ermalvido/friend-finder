@@ -18,12 +18,6 @@ class Auth extends Component {
         }
     }
     
-    componentDidMount(){
-        if(this.props.user.email){
-            this.props.history.push('/');
-        }
-    }
-
     handleInput = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
@@ -52,6 +46,7 @@ class Auth extends Component {
 
         axios.post('/api/login', {email, password})
         .then(res => {
+            console.log(res.data)
             this.props.getUser(res.data);
             this.props.history.push('/dashboard');
         })

@@ -8,8 +8,8 @@ const   GET_USER = 'GET_USER',
         LOGIN_USER = 'LOGIN_USER',
         LOGOUT_USER = 'LOGOUT_USER';
 
-export function getUser(){
-    const user = axios.get('/api/auth/user')
+export function getUser(user){
+    console.log(user)
     return {
         type: GET_USER,
         payload: user
@@ -36,12 +36,13 @@ export default function (state = initialState, action){
             return {...state, user: action.payload};
         case LOGOUT_USER:
             return {...state, ...action.payload};
-        case GET_USER + 'PENDING':
-            return state;
-        case GET_USER + 'FULFILLED':
-            return {...state, user: action.payload.data};
-        case GET_USER + 'REJECTED':
-            return initialState;
+        // case GET_USER + 'PENDING':
+            // return state;
+        case GET_USER:
+            console.log(action.payload)
+            return {user: action.payload};
+        // case GET_USER + 'REJECTED':
+        //     return initialState;
         default:
             return initialState;
     }

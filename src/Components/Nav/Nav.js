@@ -40,6 +40,10 @@ function Nav(props) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
+    if(!props.user.email){
+        props.history.push('/');
+    }
+
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
     };

@@ -48,7 +48,7 @@ class Dash extends Component {
         })
     }
     render() {
-        console.log(this.state.posts)
+        console.log(this.props)
         const mapPosts = this.state.posts.map((e) => {
             return (
                 <Link to={`/post/${e.post_id}`} key={e.post_id}>
@@ -80,10 +80,6 @@ class Dash extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        userId: state.userId
-    }
-}
+const mapStateToProps = reduxState => reduxState;
 
 export default connect(mapStateToProps)(Dash);
