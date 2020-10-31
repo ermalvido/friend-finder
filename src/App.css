@@ -1,3 +1,10 @@
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
 .App {
   padding: 20px 20px 20px 100px;
   background-color:  #f2f2f2;
@@ -36,10 +43,17 @@
   width: 35vw;
   margin: 200px auto;
   display:flex;
+  flex-flow: column wrap;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 20px; 
+}
+
+#login-button {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 140px;
 }
 
 .Dash {
@@ -49,6 +63,7 @@
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-size: small;
   vertical-align: baseline;
   align-items: center;
   box-sizing: inherit;
@@ -80,24 +95,19 @@
 }
 
 .post-box {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
+  background-image: linear-gradient(#e66465, #9198e5);
+  padding: 1px 10px 10px 10px;
   border-radius: 2px;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),
-              0 1px 2px 0 rgba(0,0,0,.2);
-  margin: 10px 0;
-  font-size: 16px;
-  font-weight: 700;
+}
+
+p {
+  color: black;
 }
 
 .dash_search_bar {
-height: 20px;
-width: 45%;
-box-sizing: inherit;
+  height: 20px;
+  width: 45%;
+  box-sizing: inherit;
 }
 
 .dash_search_button {

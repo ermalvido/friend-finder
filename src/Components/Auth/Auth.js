@@ -101,8 +101,9 @@ class Auth extends Component {
                         <Typography align='center'>Already a member? <span onClick={this.handleToggle}>Login Here</span></Typography>
                         </>)
                     : (<>
-                        <Button size='small' onClick={this.handleLogin} className='login-button' variant='outlined' color='initial'>Login</Button>
-                        <Typography align='center'>Need to create an account? <span onClick={this.handleToggle}>Register Here</span></Typography>
+                        <Button size='small' onClick={this.handleLogin} id='login-button' variant='outlined' color='initial'>Login</Button>
+                        <Typography align='center'>Need to create an account? <Button onClick={this.handleToggle}>Register Here</Button></Typography>
+                        <Button size='small'>Forgot your password?</Button>
                         </>)}
                 </section>
             </div>

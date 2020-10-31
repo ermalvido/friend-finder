@@ -56,6 +56,7 @@ class Dash extends Component {
                         <h3>{e.title}</h3>
                         <div className='author_box'>
                             <p>by {e.name}</p>
+                            <p>{e.content}</p>
                         </div>
                     </div>
                 </Link>
@@ -71,7 +72,7 @@ class Dash extends Component {
                     </div>
                     <div className='dash_check_box'>
                         <Typography>My Posts</Typography>
-                        <input checked={this.state.myPost} onChange={() => this.setState({myPost: !this.state.myPost}, this.getAllPosts)} type='checkbox' />
+                        <input checked={this.state.myPost} onChange={() => this.handleCheckBoxChange()} type='checkbox' />
                     </div>
                 </div>
                 <section className='post-box'>{mapPosts}</section>
