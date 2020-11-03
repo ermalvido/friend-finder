@@ -7,6 +7,9 @@ class Post extends Component {
     constructor(props){
         super(props)
         this.state = {
+            newTitle: '',
+            newContent: '',
+            isEditing: false,
             post: {}
         }
     }
@@ -18,13 +21,33 @@ class Post extends Component {
         .get(`/api/post/${postId}`)
         .then(res => {
             console.log(res.data)
-            this.setState({post: res.data})
+            this.setState({
+                post: res.data,
+                newTitle: res.data.title,
+                newContent: res.data.content
+            })
         })
         .catch(err => console.log(err))
     }
 
-    updatePost = () => {
+    handleToggle = () => {
+        this.setState({
+            isEditing: !this.state.isEditing
+        })
+    }
 
+    handleInput = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    updatePost = () => {
+        axios.put(`/api/post/${this.state.post.post_id}`, {title: this.state.newTitle, content: this.state.newContent})
+        .then(() => {
+            this.props.history.push('/dashboard')
+        })
+        .catch(err => console.log(err))
     }
 
     delete = () => {
@@ -38,28 +61,35 @@ class Post extends Component {
     render() {
         return (
             <div className='post_content_box'>
-                {this.state.post.title
-                    ?
+                {this.state.isEditing ?(
                     <div>
-                        <div className='post_header'>
-                            <h2 className='title'>{this.state.post.title}</h2>
-                        </div>
-                        <div className='post_content'>
-                            <p>{this.state.post.content}</p>
-                        </div>
-                        <div className='author_box'>
-                            <p>by {this.state.post.name}</p>
-                        </div>
+                        <input placeholder='new_title' name='newTitle' onChange={(e) => this.handleInput(e)} value={this.state.newTitle}/>
+                        <input placeholder='new_content' name='newContent' onChange={(e) => this.handleInput(e)} value={this.state.newContent}/>
+                        <Button variant='outlined' size='small' onClick={this.updatePost}>Save</Button>
+                        <Button variant='outlined' size='small' onClick={this.handleToggle}>Cancel</Button>
                     </div>
-                    :
-                    <div className='oops_box'>
-                        <h2 className='title'>Oops!</h2>
-                        <p>Looks like this post doesn't exist anymore</p>
-                    </div>
-                }
+                ) : (
+                    this.state.post.title
+                        ?
+                        <div>
+                            <div className='post_header'>
+                                <h2 className='title'>{this.state.post.title}</h2>
+                            </div>
+                            <div className='post_content'>
+                                <p>{this.state.post.content}</p>
+                            </div>
+                            <div className='author_box'>
+                                <p>by {this.state.post.name}</p>
+                            </div>
+                        </div>
+                        :
+                        <div className='oops_box'>
+                            <h2 className='title'>Oops!</h2>
+                            <p>Looks like this post doesn't exist anymore</p>
+                        </div>
+                )}
                 <div className='edits'>
-                    <Button variant='outlined' size='small'>Edit</Button>
-                    <Button variant='outlined' size='small'>Save</Button>
+                    <Button variant='outlined' size='small' onClick={this.handleToggle}>Edit</Button>
                     <Button variant='outlined' size='small' onClick={this.delete} className='black_button'>Delete</Button>
                 </div>
             </div>

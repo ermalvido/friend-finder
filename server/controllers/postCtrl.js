@@ -34,7 +34,7 @@ module.exports = {
         const {id} = req.params,
               {title, content} = req.body,
               db = req.app.get('db');
-        
+        console.log(id, title, content)
         db.post.update_post(title, content, id)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err));

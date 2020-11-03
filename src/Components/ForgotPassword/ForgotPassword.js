@@ -9,15 +9,20 @@ function ForgotPassword(props) {
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     }
-    const sendEmail = () => {
+    const sendEmail = async(e) => {
+        e.preventDefault();
         const {email} = state;
-        axios
+        await axios
             .post('/api/email', {email})
             .then(() => {
-                props.history.push('/')
+                alert(`Reset password email has been sent.`)
                 sState({email: ''})
+                props.history.push('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                alert('Email is not on file.')
+                console.log(err)
+            })
     }
     return (
         <div>
