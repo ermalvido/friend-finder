@@ -24,7 +24,5 @@ create table if not exists comments(
 create table if not exists profile(
     user_id int references users(user_id),
     about text,
-    likes text,
-    dislikes text,
     profile_picture text
 );

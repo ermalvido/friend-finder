@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../../ducks/reducer';
 import { Button, Typography } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 class Auth extends Component {
     constructor(props){
@@ -103,8 +104,10 @@ class Auth extends Component {
                     : (<>
                         <Button size='small' onClick={this.handleLogin} id='login-button' variant='outlined' color='initial'>Login</Button>
                         <Typography align='center'>Need to create an account? <Button onClick={this.handleToggle}>Register Here</Button></Typography>
-                        <Button size='small'>Forgot your password?</Button>
                         </>)}
+                        <Link to='/forgotPassword'>
+                            <Button size='small'>Forgot your password?</Button>
+                        </Link>
                 </section>
             </div>
         )

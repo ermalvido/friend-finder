@@ -33,7 +33,8 @@ app.get('/api/logout', authCtrl.logout);
 
 app.post('/api/posts/create', postCtrl.createPost);
 app.get('/api/posts', postCtrl.getAllPost);
-app.get('/api/posts/:id', postCtrl.getUserPosts);
+app.get('/api/post/:id', postCtrl.getSinglePost);
+app.put('/api/post/:id', postCtrl.updatePost);
 app.delete('/api/post/:id', postCtrl.deletePost);
 
 app.put('/api/user/:id', postCtrl.updateUser);

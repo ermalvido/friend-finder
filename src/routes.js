@@ -14,6 +14,6 @@ export default (
         <Route path='/dashboard' component={Dash} />
         <Route path='/post/:postId' component={Post} />
         <Route path='/new' component={Form} />
-        <Route path='/forgotpassword' component={ForgotPassword} />
+        <Route path='/forgotPassword' component={ForgotPassword} />
     </Switch>
 )

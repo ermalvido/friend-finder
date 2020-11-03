@@ -7,38 +7,48 @@ class Post extends Component {
     constructor(props){
         super(props)
         this.state = {
-            title: '',
-            user_id: '',
-            content: ''
+            post: {}
         }
-        this.delete = this.delete.bind(this)
     }
 
     componentDidMount() {
-        axios.get('/api/post/${this.props.match.params.id}').then(res => {
-            this.setState({...res.data[0]})
+        const {postId} = this.props.match.params;
+        console.log(postId)
+        axios
+        .get(`/api/post/${postId}`)
+        .then(res => {
+            console.log(res.data)
+            this.setState({post: res.data})
         })
+        .catch(err => console.log(err))
     }
 
-    delete() {
-        axios.delete('/api/post/${this.props.match.params.id}').then(res => {
+    updatePost = () => {
+
+    }
+
+    delete = () => {
+        axios.delete(`/api/post/${this.state.post.post_id}`)
+        .then(() => {
             this.props.history.push('/dashboard')
         })
+        .catch(err => console.log(err))
     }
+
     render() {
         return (
             <div className='post_content_box'>
-                {this.state.title
+                {this.state.post.title
                     ?
                     <div>
                         <div className='post_header'>
-                            <h2 className='title'>{this.state.title}</h2>
-                            <div className='author_box'>
-                                <p>by {this.state.name}</p>
-                            </div>
+                            <h2 className='title'>{this.state.post.title}</h2>
                         </div>
                         <div className='post_content'>
-                            <p>{this.state.content}</p>
+                            <p>{this.state.post.content}</p>
+                        </div>
+                        <div className='author_box'>
+                            <p>by {this.state.post.name}</p>
                         </div>
                     </div>
                     :
@@ -47,7 +57,9 @@ class Post extends Component {
                         <p>Looks like this post doesn't exist anymore</p>
                     </div>
                 }
-                <div className='delete'>
+                <div className='edits'>
+                    <Button variant='outlined' size='small'>Edit</Button>
+                    <Button variant='outlined' size='small'>Save</Button>
                     <Button variant='outlined' size='small' onClick={this.delete} className='black_button'>Delete</Button>
                 </div>
             </div>

@@ -40,7 +40,7 @@ function Nav(props) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
-    if(!props.user.email){
+    if(!props.user.email && props.location.pathname !== '/forgotPassword'){
         props.history.push('/');
     }
 

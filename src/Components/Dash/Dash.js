@@ -52,11 +52,11 @@ class Dash extends Component {
         const mapPosts = this.state.posts.map((e) => {
             return (
                 <Link to={`/post/${e.post_id}`} key={e.post_id}>
-                    <div className='content_box dash_post_box'>
-                        <h3>{e.title}</h3>
+                    <div className='content_box_dash_post_box'>
+                        <Typography>{e.title}</Typography>
                         <div className='author_box'>
-                            <p>by {e.name}</p>
                             <p>{e.content}</p>
+                            <p>by {e.name}</p>
                         </div>
                     </div>
                 </Link>
@@ -71,6 +71,7 @@ class Dash extends Component {
                             <Button size='small' onClick={this.resetSearch} className='black_button' id='dash_reset'>Reset</Button>
                     </div>
                     <div className='dash_check_box'>
+                        <Typography display='inline'>{this.props.user.city} {this.props.user.state}</Typography>
                         <Typography>My Posts</Typography>
                         <input checked={this.state.myPost} onChange={() => this.handleCheckBoxChange()} type='checkbox' />
                     </div>

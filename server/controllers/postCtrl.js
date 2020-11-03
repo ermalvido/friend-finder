@@ -15,12 +15,28 @@ module.exports = {
         .then(posts => res.status(200).send(posts))
         .catch(err => res.status(500).send(err));
     },
+    getSinglePost: async(req, res) => {
+        const {id} = req.params,
+        db = req.app.get('db');
+
+        const [post] = await db.post.get_single_post(id)
+        res.status(200).send(post)
+    },
     getUserPosts: async(req, res) => {
         const {id} = req.params,
             db = req.app.get('db');
 
         db.post.get_user_posts(id)
         .then(posts => res.status(200).send(posts))
+        .catch(err => res.status(500).send(err));
+    },
+    updatePost: async(req, res) => {
+        const {id} = req.params,
+              {title, content} = req.body,
+              db = req.app.get('db');
+        
+        db.post.update_post(title, content, id)
+        .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err));
     },
     deletePost: async(req, res) => {
@@ -33,10 +49,10 @@ module.exports = {
     },
     updateUser: (req, res) => {
         const   {id} = req.params,
-                {name, city, state} = req.body,
+                {city, state} = req.body,
                 db = req.app.get('db');
 
-        db.users.update_user(name, city, state, id)
+        db.users.update_user(city, state, id)
         .then(user => res.status(200).send(user))
         .catch(err => console.log(err));
     }
